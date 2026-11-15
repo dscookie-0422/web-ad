@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대출 갈아타기 계산기 | 체증식·LTV·중도상환수수료까지</title>
+<meta name="description" content="주택담보대출·전세자금대출을 갈아탈 때 진짜 이득인지 30초 만에 확인하세요. 지금 대출과 갈아탈 대출의 상환방식을 각각 고르고(원리금균등·원금균등·만기일시·체증식), 중도상환수수료·부대비용·LTV까지 넣어 총 순절감액과 손익분기점을 계산해 드려요.">
+<meta name="keywords" content="대출 갈아타기 계산기, 주담대 갈아타기, 전세대출 갈아타기, 체증식 계산기, 체증식 분할상환, LTV 계산, 중도상환수수료 계산, 대환대출, 이자 절감">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="대출 갈아타기 계산기">
+<meta name="theme-color" content="#0f2a5f">
+<link rel="canonical" href="https://dscookie-0422.github.io/web-ad/">
+<!-- 배포할 때 example.com 을 실제 도메인으로 바꿔 주세요 (canonical, og:url, og:image, sitemap.xml, robots.txt) -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="대출 갈아타기 계산기">
+<meta property="og:title" content="대출 갈아타기 계산기 | 체증식·LTV까지 넣은 진짜 손익">
+<meta property="og:description" content="금리 차이만 보면 안 됩니다. 중도상환수수료·부대비용·LTV까지 넣고, 체증식과 원리금균등을 나란히 비교해 본전 찾는 개월 수까지 계산해 드려요.">
+<meta property="og:url" content="https://dscookie-0422.github.io/web-ad/">
+<meta property="og:image" content="https://dscookie-0422.github.io/web-ad/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="대출 갈아타기 계산기 — 체증식·LTV·중도상환수수료까지 넣은 손익 계산">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="대출 갈아타기 계산기 | 체증식·LTV까지 넣은 진짜 손익">
+<meta name="twitter:description" content="금리 차이만 보면 안 됩니다. 중도상환수수료·부대비용·LTV까지 넣고, 체증식과 원리금균등을 나란히 비교해 본전 찾는 개월 수까지 계산해 드려요.">
+<meta name="twitter:image" content="https://dscookie-0422.github.io/web-ad/og-image.png">
+<meta name="twitter:image:alt" content="대출 갈아타기 계산기 — 체증식·LTV·중도상환수수료까지 넣은 손익 계산">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2a5f'/%3E%3Cpath d='M18 40l10-10 6 6 12-14' stroke='%232ee6a8' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "대출 갈아타기 손익 계산기",
+  "alternateName": "주담대·전세대출 갈아타기 계산기",
+  "url": "https://dscookie-0422.github.io/web-ad/",
+  "description": "주택담보대출과 전세자금대출을 갈아탈 때 중도상환수수료와 부대비용, LTV를 포함해 총 순절감액, 월 납입금 변화, 손익분기점을 계산하는 무료 웹 계산기입니다.",
+  "applicationCategory": "FinanceApplication",
+  "applicationSubCategory": "Loan calculator",
+  "operatingSystem": "Web",
+  "browserRequirements": "HTML, CSS, JavaScript",
+  "inLanguage": "ko-KR",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "KRW"
+  },
+  "featureList": [
+    "주택담보대출·전세자금대출 갈아타기 손익 계산",
+    "지금 대출과 갈아탈 대출의 상환방식 개별 선택(원리금균등·원금균등·만기일시·체증식)",
+    "체증식 분할상환(연 체증률) 첫해·만기 부근 월 납입금 계산",
+    "집값 대비 LTV(담보인정비율) 실시간 계산과 기준 초과 표시",
+    "중도상환수수료(잔존일수÷대출기간) 반영",
+    "손익분기점 개월 수 계산",
+    "누적 순이익·월 납입금 흐름 그래프"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "대출 갈아타기 계산기",
+    "url": "https://dscookie-0422.github.io/web-ad/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "금리 차이가 0.1%p만 나도 갈아타는 게 좋을까요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "0.1%p 차이면 3억 원 기준 이자가 한 달에 2만 5천 원 정도예요. 중도상환수수료와 부대비용이 100만 원만 돼도 본전 찾는 데 40개월이 걸려요. 금리 차이보다 남은 기간과 수수료를 먼저 보세요. 위 계산기에 두 금리를 넣으면 본전까지 몇 개월인지 바로 나와요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "체증식 분할상환은 어떻게 계산하고, 원리금균등보다 유리한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "체증식은 첫해 납입금을 낮게 시작해 해마다 같은 비율(체증률)로 올리는 방식이에요. 이 계산기는 1년마다 체증률만큼 오르는 모델로, 모든 납입액을 대출금리로 할인한 합이 원금과 같아지도록 첫해 납입금을 역산합니다. 초반 부담은 확실히 줄지만 원금이 늦게 줄어 총이자는 원리금균등보다 많아져요. 예를 들어 3억 원·연 4%·30년이면 첫해 월 143만 원(원리금균등)이 체증률 3%에서 99만 원으로 내려가고, 대신 총이자는 2억 1,561만 원에서 2억 6,277만 원으로 늘어요. 한국주택금융공사 보금자리론·디딤돌대출 체증식은 매월 일정 금액씩 오르는 방식이라 금액이 조금 달라질 수 있어요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "중도상환수수료는 언제부터 0원이 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "대출 계약일부터 3년이 지나면 원칙적으로 받을 수 없어요(금융소비자보호법 제20조). 은행·저축은행·보험사가 대상이고, 상호금융은 약정서 기준이 다를 수 있어요. 수수료율은 대출받은 시점 요율이 유지되고, 3년에 가까워질수록 잔존일수 비율만큼 줄어들어요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "LTV는 어떻게 계산하고, 내 대출은 한도 안에 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LTV(담보인정비율)는 남은 대출 원금을 집값으로 나눈 비율이에요. 2026년 11월 기준으로 무주택자는 규제지역 40%, 수도권 비규제·지방 70%이고, 생애최초는 수도권·규제지역 70%, 그 밖의 지역 80%예요. 수도권과 규제지역에서 집을 살 때는 비율과 별개로 집값 15억 원 이하 6억 원, 15억~25억 원 4억 원, 25억 원 초과 2억 원 한도가 함께 붙어요. LTV는 상한일 뿐이라 DSR과 신용 심사에서 실제 한도가 더 낮아질 수 있어요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "전세자금대출도 갈아탈 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "보증부 전세자금대출이면 가능해요. 기존 대출을 받은 지 3개월이 지나야 하고, 임차계약 기간의 절반이 지나기 전까지 신청할 수 있어요. 한도는 기존 잔액 이내이고, 기존 보증기관(HF·HUG·SGI서울보증)과 같은 기관의 상품으로만 갈아탈 수 있어요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "대출을 갈아타면 신용점수가 떨어지나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "갈아타기 자체로 크게 떨어지진 않아요. 2024년 1월 금융위원회 발표를 보면 주담대를 갈아탄 차주의 신용점수가 평균 32점 올랐어요. 다만 짧은 기간에 여러 금융사에 한꺼번에 신청하면 조회 기록이 쌓이니 한두 곳씩 비교해 보세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "갈아탈 때 상환방식을 바꿔도 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "새 대출은 신청할 때 상환방식을 고르는 경우가 많아서 바꿀 수 있지만, 한국주택금융공사 보금자리론처럼 실행 후에는 상환방식을 바꿀 수 없는 상품도 있어요. 체증식은 만 40세 미만이거나 공사 사전심사를 받은 경우에만 고를 수 있고, 50년 만기에는 쓸 수 없어요. 이 계산기에서는 지금 대출과 갈아탈 대출의 방식을 따로 골라 비교할 수 있어요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "계산 결과와 은행에서 안내받은 금액이 달라요.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "이 계산기는 같은 원금·같은 남은 기간으로 단순 비교해요. 실제로는 우대금리 충족 여부, 변동금리 주기, 수수료 일수 절사 방식, 체증식의 증가 방식(매월 정액·매년 정률), 인지세·등기비용 차이 때문에 몇만 원에서 몇십만 원까지 달라질 수 있어요. 최종 금액은 은행 앱의 중도상환수수료 조회 화면으로 확인해 주세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "만기를 늘려서 갈아타면 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "월 납입금은 줄지만 총이자는 늘어나요. 같은 4억 원이라도 25년을 30년으로 늘리면 5년치 이자가 더 붙어요. 이 계산기는 남은 기간을 그대로 두고 비교하니, 기간을 늘릴 계획이면 총이자까지 함께 따져보세요."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="대출 갈아타기 계산기 홈">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15l4.5-4.5 3.5 3.5L20 6"/><path d="M20 11V6h-5"/></svg>
+      </span>
+      <span class="brand-text">대출 갈아타기 계산기</span>
+    </a>
+    <span class="header-note">무료 · 로그인 없음 · 입력값은 브라우저에서만 계산</span>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero container">
+    <p class="eyebrow">체증식 · LTV · 중도상환수수료까지 넣고 계산</p>
+    <h1>대출 갈아타기, 진짜 이득일까?</h1>
+    <p class="lede">
+      금리만 낮다고 갈아타면 손해 볼 수 있어요. 중도상환수수료와 부대비용을 내고 나서
+      <strong>본전을 찾는 데 몇 개월 걸리는지</strong>가 진짜 답이에요.
+      지금 대출과 갈아탈 대출의 <strong>상환방식을 각각</strong> 골라 비교해 보세요.
+    </p>
+    <ul class="trust-row">
+      <li>은행 약정서와 같은 수수료 공식</li>
+      <li>체증식·원리금균등 교차 비교</li>
+      <li>입력값 서버 전송 없음</li>
+    </ul>
+  </section>
+
+  <section class="calc container" id="calculator" aria-labelledby="calc-title">
+    <h2 id="calc-title" class="visually-hidden">대출 갈아타기 손익 계산</h2>
+
+    <!-- AdSense Slot: 계산기 위 가로 배너 (승인 후 활성화) -->
+    <div class="ad-slot ad-slot--top" data-ad-slot="top" aria-hidden="true"></div>
+
+    <div class="calc-grid">
+      <!-- ============ 입력 ============ -->
+      <form class="panel inputs" id="calc-form" novalidate autocomplete="off">
+        <div class="panel-head">
+          <h2 class="panel-title">내 대출 조건</h2>
+          <div class="preset-row" aria-label="예시 채우기">
+            <button type="button" class="chip-btn" data-preset="mortgage">주담대 예시</button>
+            <button type="button" class="chip-btn" data-preset="jeonse">전세대출 예시</button>
+            <button type="button" class="chip-btn" data-preset="graduated">체증식 비교</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="loanType-label">대출 종류</span>
+          <div class="segmented" role="radiogroup" aria-labelledby="loanType-label">
+            <label class="seg"><input type="radio" name="loanType" value="mortgage" checked><span>주택담보대출</span></label>
+            <label class="seg"><input type="radio" name="loanType" value="jeonse"><span>전세자금대출</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="principal">남은 대출 원금</label>
+          <div class="input-wrap">
+            <input id="principal" name="principal" type="number" inputmode="numeric" min="0" max="1000000" step="100" value="30000">
+            <span class="unit">만 원</span>
+          </div>
+          <p class="hint hint--strong" id="principal-kor">3억 원</p>
+          <div class="quick-row">
+            <button type="button" class="chip-btn" data-add="10000">+1억</button>
+            <button type="button" class="chip-btn" data-add="5000">+5천</button>
+            <button type="button" class="chip-btn" data-add="1000">+1천</button>
+            <button type="button" class="chip-btn chip-btn--ghost" data-add="reset">초기화</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="housePrice" id="housePrice-label">집값 (매매가·시세)</label>
+          <div class="input-wrap">
+            <input id="housePrice" name="housePrice" type="number" inputmode="numeric" min="0" max="1000000" step="1000" value="70000">
+            <span class="unit">만 원</span>
+          </div>
+          <div class="ltv-pick" id="ltv-pick">
+            <label class="sub-label" for="ltvBasis">LTV 기준</label>
+            <select id="ltvBasis" name="ltvBasis" class="select-full select-compact">
+              <option value="70" selected>일반·비규제 70%</option>
+              <option value="40">규제지역 무주택 40%</option>
+              <option value="70e">생애최초 70%</option>
+              <option value="80e">생애최초(지방) 80%</option>
+            </select>
+          </div>
+          <p class="hint hint--strong" id="ltv-inline">LTV 42.9% · 일반 기준 70% 이내</p>
+          <p class="hint" id="ltv-hint">남은 원금 ÷ 집값으로 계산해요. 규제지역 무주택은 40%, 생애최초는 70~80%까지 가능해요.</p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="term">남은 대출 기간</label>
+          <div class="input-wrap">
+            <input id="term" name="term" type="number" inputmode="numeric" min="1" max="600" step="1" value="360">
+            <select id="termUnit" name="termUnit" class="unit-select" aria-label="기간 단위">
+              <option value="months" selected>개월</option>
+              <option value="years">년</option>
+            </select>
+          </div>
+          <p class="hint" id="term-kor">30년 남음</p>
+        </div>
+
+        <div class="field">
+          <span class="field-label">금리</span>
+          <div class="rate-grid">
+            <div>
+              <label class="sub-label" for="rateNow">지금 금리</label>
+              <div class="input-wrap">
+                <input id="rateNow" name="rateNow" type="number" inputmode="decimal" min="0" max="30" step="0.01" value="4.60">
+                <span class="unit">%</span>
+              </div>
+            </div>
+            <div>
+              <label class="sub-label" for="rateNew">갈아탈 금리</label>
+              <div class="input-wrap">
+                <input id="rateNew" name="rateNew" type="number" inputmode="decimal" min="0" max="30" step="0.01" value="3.70">
+                <span class="unit">%</span>
+              </div>
+            </div>
+          </div>
+          <p class="hint" id="rate-diff">금리 차이 −0.90%p</p>
+        </div>
+
+        <div class="method-block">
+          <div class="field field--tight">
+            <span class="field-label" id="methodNow-label">지금 대출 상환방식</span>
+            <div class="segmented segmented--4" role="radiogroup" aria-labelledby="methodNow-label">
+              <label class="seg"><input type="radio" name="methodNow" value="equal" checked><span>원리금균등</span></label>
+              <label class="seg"><input type="radio" name="methodNow" value="principal"><span>원금균등</span></label>
+              <label class="seg"><input type="radio" name="methodNow" value="bullet"><span>만기일시</span></label>
+              <label class="seg"><input type="radio" name="methodNow" value="graduated"><span>체증식</span></label>
+            </div>
+          </div>
+
+          <div class="field field--tight">
+            <span class="field-label" id="methodNew-label">갈아탈 대출 상환방식</span>
+            <div class="segmented segmented--4" role="radiogroup" aria-labelledby="methodNew-label">
+              <label class="seg"><input type="radio" name="methodNew" value="equal" checked><span>원리금균등</span></label>
+              <label class="seg"><input type="radio" name="methodNew" value="principal"><span>원금균등</span></label>
+              <label class="seg"><input type="radio" name="methodNew" value="bullet"><span>만기일시</span></label>
+              <label class="seg"><input type="radio" name="methodNew" value="graduated"><span>체증식</span></label>
+            </div>
+          </div>
+
+          <p class="hint" id="method-hint">매달 같은 금액을 내는 방식이에요. (원금+이자)</p>
+
+          <div class="field field--last" id="step-field" hidden>
+            <label class="field-label" for="stepRate">체증률 (1년마다 오르는 비율)</label>
+            <div class="input-wrap">
+              <input id="stepRate" name="stepRate" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="3.0">
+              <span class="unit">%</span>
+            </div>
+            <div class="chips" id="step-chips" role="group" aria-label="체증률 빠른 선택">
+              <button type="button" class="chip-btn" data-step="1">1%</button>
+              <button type="button" class="chip-btn" data-step="2">2%</button>
+              <button type="button" class="chip-btn" data-step="3">3%</button>
+              <button type="button" class="chip-btn" data-step="5">5%</button>
+            </div>
+            <p class="hint" id="step-hint">1년마다 월 납입금이 이 비율만큼 올라가요. 보금자리론·디딤돌은 매월 일정 금액씩 오르는 방식이라 금액이 조금 달라요.</p>
+          </div>
+        </div>
+
+        <fieldset class="subfield">
+          <legend>중도상환수수료</legend>
+          <div class="field">
+            <label class="field-label" for="feeRate">수수료율</label>
+            <div class="input-wrap">
+              <input id="feeRate" name="feeRate" type="number" inputmode="decimal" min="0" max="5" step="0.01" value="1.20">
+              <span class="unit">%</span>
+            </div>
+            <p class="hint">약정서의 요율을 넣어 주세요. 2025년 1월 이후 새로 받은 대출은 0.5~0.7%대인 경우가 많아요.</p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="feeMonths">면제까지 남은 기간</label>
+            <div class="input-wrap">
+              <input id="feeMonths" name="feeMonths" type="number" inputmode="numeric" min="0" max="120" step="1" value="24">
+              <span class="unit">개월</span>
+            </div>
+            <div class="chips" id="fee-chips" role="group" aria-label="면제까지 남은 기간 빠른 선택">
+              <button type="button" class="chip-btn" data-fee-months="0">면제됨</button>
+              <button type="button" class="chip-btn" data-fee-months="6">6개월</button>
+              <button type="button" class="chip-btn" data-fee-months="12">1년</button>
+              <button type="button" class="chip-btn" data-fee-months="18">1.5년</button>
+              <button type="button" class="chip-btn" data-fee-months="24">2년</button>
+              <button type="button" class="chip-btn" data-fee-months="36">3년</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="feeBasis">수수료 부과 기간</label>
+            <div class="input-wrap">
+              <select id="feeBasis" name="feeBasis" class="select-full">
+                <option value="36" selected>3년 (기본)</option>
+                <option value="24">2년</option>
+                <option value="12">1년</option>
+              </select>
+            </div>
+            <p class="hint">대출기간이 3년보다 짧으면 그 기간이 기준이 돼요. 법으로는 계약일부터 3년까지만 받을 수 있어요.</p>
+          </div>
+
+          <p class="fee-preview" id="fee-preview">예상 수수료 400만 원</p>
+        </fieldset>
+
+        <div class="field">
+          <label class="field-label" for="etcCost">기타 갈아타기 비용</label>
+          <div class="input-wrap">
+            <input id="etcCost" name="etcCost" type="number" inputmode="decimal" min="0" max="10000" step="0.5" value="7">
+            <span class="unit">만 원</span>
+          </div>
+          <p class="hint">인지세, 근저당 설정·말소 등기 비용, 전세대출 보증료 등. 모르면 7만 원쯤으로 두세요.</p>
+        </div>
+      </form>
+
+      <!-- ============ 결과 ============ -->
+      <div class="panel results" id="results" aria-live="polite">
+        <div class="verdict" id="verdict" data-state="good">
+          <span class="verdict-badge" id="verdict-badge">갈아타는 게 이득이에요</span>
+          <h2 class="verdict-title" id="verdict-title">25년 동안 7,142만 원을 아껴요</h2>
+          <p class="verdict-sub" id="verdict-sub">중도상환수수료 240만 원을 내고도 7개월이면 본전을 찾아요.</p>
+        </div>
+
+        <div class="stats" id="stats">
+          <div class="stat">
+            <span class="stat-label">총 순절감액</span>
+            <strong class="stat-value" id="stat-net">7,142만 원</strong>
+            <span class="stat-sub" id="stat-net-sub">이자 절감 7,389만 원 − 비용 247만 원</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" id="stat-monthly-label">월 납입금</span>
+            <strong class="stat-value" id="stat-monthly">−24만 6,332원</strong>
+            <span class="stat-sub" id="stat-monthly-sub">229만 1,988원 → 204만 5,655원</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">손익분기점</span>
+            <strong class="stat-value" id="stat-breakeven">7개월</strong>
+            <span class="stat-sub" id="stat-breakeven-sub">약 0년 7개월 뒤 본전</span>
+          </div>
+        </div>
+
+        <div class="card ltv-card" id="ltv-card" data-state="good">
+          <div class="ltv-head">
+            <h3 class="ltv-title" id="ltv-label">LTV (담보인정비율)</h3>
+            <span class="ltv-badge" id="ltv-badge">LTV 42.9% · 일반 기준 70% 이내</span>
+          </div>
+          <div class="ltv-meter" id="ltv-meter" role="img" aria-label="LTV 42.9%, 기준 70%">
+            <span class="ltv-fill" id="ltv-fill" style="width:49%"></span>
+            <span class="ltv-mark" id="ltv-mark" style="left:80%"><i></i></span>
+          </div>
+          <p class="ltv-note" id="ltv-note">집값 7억 원 기준 최대 4억 9,000만 원까지 · 남은 원금 3억 원 (여유 1억 9,000만)</p>
+          <p class="ltv-fine">LTV는 상한일 뿐이라 DSR·신용 심사에서 실제 한도가 더 낮을 수 있어요. 수도권·규제지역은 집값별 금액 한도(15억 이하 6억 원 등)도 함께 적용돼요.</p>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-head">
+            <h3>월 납입금 흐름 (연 단위)</h3>
+            <span class="chart-legend"><i class="dot dot--now"></i>지금 <i class="dot dot--new"></i>갈아타기</span>
+          </div>
+          <div class="chart" id="payment-chart" role="img" aria-label="연도별 월 납입금 변화 그래프"></div>
+          <p class="chart-note" id="payment-note"></p>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-head">
+            <h3>누적 순이익 흐름</h3>
+            <span class="chart-legend"><i class="dot dot--plus"></i>이득 <i class="dot dot--minus"></i>손해</span>
+          </div>
+          <div class="chart" id="chart" role="img" aria-label="개월 수에 따른 누적 순이익 그래프"></div>
+          <p class="chart-note" id="chart-note"></p>
+        </div>
+
+        <div class="card table-card">
+          <div class="card-head"><h3>현재 대출 vs 갈아타기</h3></div>
+          <div class="table-scroll">
+            <table class="compare">
+              <caption class="visually-hidden">현재 대출과 갈아탄 대출의 상환방식·월 납입금·이자·비용·순이익 비교</caption>
+              <thead>
+                <tr>
+                  <th scope="col">항목</th>
+                  <th scope="col">지금 대출</th>
+                  <th scope="col">갈아타기</th>
+                  <th scope="col">차이</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="row-method">
+                  <th scope="row">상환방식</th>
+                  <td id="row-method-now">—</td>
+                  <td id="row-method-new">—</td>
+                  <td class="is-none">—</td>
+                </tr>
+                <tr>
+                  <th scope="row">1년차 월 납입금</th>
+                  <td id="row-m1-now">—</td>
+                  <td id="row-m1-new">—</td>
+                  <td id="row-m1-diff">—</td>
+                </tr>
+                <tr>
+                  <th scope="row">마지막 해 월 납입금</th>
+                  <td id="row-mlast-now">—</td>
+                  <td id="row-mlast-new">—</td>
+                  <td id="row-mlast-diff">—</td>
+                </tr>
+                <tr>
+                  <th scope="row">월 평균 상환액</th>
+                  <td id="row-monthly-now">—</td>
+                  <td id="row-monthly-new">—</td>
+                  <td id="row-monthly-diff">—</td>
+                </tr>
+                <tr>
+                  <th scope="row">총 이자</th>
+                  <td id="row-int-now">—</td>
+                  <td id="row-int-new">—</td>
+                  <td id="row-int-diff">—</td>
+                </tr>
+                <tr>
+                  <th scope="row">총 상환액</th>
+                  <td id="row-total-now">—</td>
+                  <td id="row-total-new">—</td>
+                  <td id="row-total-diff">—</td>
+                </tr>
+                <tr>
+                  <th scope="row">갈아타기 비용</th>
+                  <td id="row-cost-now">—</td>
+                  <td id="row-cost-new">—</td>
+                  <td id="row-cost-diff">—</td>
+                </tr>
+                <tr class="row-strong">
+                  <th scope="row">최종 순이익</th>
+                  <td id="row-net-now">—</td>
+                  <td id="row-net-new">—</td>
+                  <td id="row-net-diff">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="assumptions" id="assumptions">
+            <li>같은 원금 · 같은 남은 기간으로 비교해요. 상환방식은 각각 따로 계산해요.</li>
+            <li>비용은 갈아타는 시점에 현금으로 낸다고 보고 계산해요.</li>
+          </ul>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn-primary" id="copy-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H16"/></svg>
+            결과 요약 복사
+          </button>
+          <span class="copy-state" id="copy-state" role="status" aria-live="polite"></span>
+        </div>
+        <p class="fineprint">참고용 계산이에요. 실제 금액은 은행 앱의 중도상환수수료 조회와 상환 스케줄로 꼭 확인해 주세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AdSense Slot: 가이드 진입부 (본문과 자연스럽게 이어지는 위치) -->
+  <div class="ad-slot ad-slot--inline container" data-ad-slot="inline" aria-hidden="true"></div>
+
+  <!-- ============ 가이드 ============ -->
+  <section class="guide container" id="guide" aria-labelledby="guide-title">
+    <h2 id="guide-title">갈아타기 전에 읽어두면 좋은 것들</h2>
+    <p class="guide-lede">
+      계산기 숫자는 30초면 나오지만, 실제로 손해를 피하려면 서류에 적힌 몇 가지를 확인해야 해요.
+      은행 창구에서 물어보기 전에 미리 알아두면 좋은 것들만 모았어요.
+    </p>
+
+    <article class="guide-card">
+      <h3>1. 주담대·전세대출 갈아타기 전 꼭 확인할 3가지</h3>
+
+      <h4>① 금리가 아니라 &lsquo;총비용&rsquo;으로 보세요</h4>
+      <p>
+        금리 1.1%p 차이면 4억 원·원리금균등 25년 기준 월 납입금이 평균 24만 원쯤 줄어요. 그런데 중도상환수수료가 240만 원 나오면
+        그걸 메우는 데만 10개월이 걸려요. 여기에 인지세, 근저당 설정·말소 등기 비용, 전세대출이면 보증료까지 붙어요.
+        <strong>월 납입금이 줄어드는 금액 × 버틸 수 있는 개월 수</strong>가 실제로 남는 돈이에요.
+      </p>
+
+      <h4>② 갈아탄 뒤 &lsquo;남은 기간&rsquo;을 늘리지 마세요</h4>
+      <p>
+        만기를 다시 30년으로 늘리면 월 납입금은 확 줄어들어요. 대신 총이자는 오히려 늘어나죠.
+        이 계산기는 같은 원금·같은 남은 기간으로 비교하니까, 기간을 늘릴 계획이라면
+        월 납입금만 보고 판단하면 안 돼요. 늘어난 기간만큼 이자가 더 붙는다는 것만 기억해 주세요.
+      </p>
+
+      <h4>③ 새 대출의 &lsquo;조건&rsquo;까지 확인하세요</h4>
+      <p>
+        고정금리인지 변동금리인지, 우대금리는 어떤 조건에서 유지되는지(급여이체·카드실적·첫 거래),
+        한도는 얼마인지, 그리고 새 대출에도 3년짜리 중도상환수수료가 다시 붙는지 확인해야 해요.
+        광고에 적힌 최저금리는 우대금리를 다 채웠을 때 나오는 숫자인 경우가 많아서,
+        우대 0.3%p만 빠져도 계산 결과가 뒤집혀요.
+      </p>
+    </article>
+
+    <article class="guide-card">
+      <h3>2. 중도상환수수료 면제 시점 계산하는 법</h3>
+      <p>은행 약정서에 적힌 공식은 이렇게 생겼어요.</p>
+      <p class="formula">중도상환수수료 = 상환원금 × 수수료율 × (잔존일수 ÷ 대출기간)</p>
+      <p>
+        여기서 중요한 건 <strong>대출기간이 3년을 넘으면 3년(1,095일)로 계산한다</strong>는 점이에요.
+        30년짜리 주담대라도 분모는 30년이 아니라 3년이에요. 그래서 대출받은 지 3년이 지나면 잔존일수가 0이 되고,
+        수수료도 0원이 돼요.
+      </p>
+      <ul class="guide-list">
+        <li><strong>예시:</strong> 4억 원을 수수료율 1.2%, 면제까지 1년 6개월(약 547일) 남기고 갚으면
+          4억 × 1.2% × (547 ÷ 1,095) ≈ <strong>240만 원</strong>이에요. 같은 조건이라도 1년 남았을 때 갚으면 160만 원으로 줄어요.</li>
+        <li><strong>법이 정한 선:</strong> 금융소비자보호법 제20조 때문에 은행·저축은행·보험사는 대출 계약일부터 3년이 지난 뒤에는
+          중도상환수수료를 받을 수 없어요. 새마을금고·신협 같은 상호금융은 적용이 달라서 약정서를 봐야 해요.</li>
+        <li><strong>1개월 미만:</strong> 잔여기간이 한 달도 안 남으면 면제해 주는 약정이 많아요. 3년 경계일에 갚을 계획이라면
+          하루 차이로 0원이 될 수 있으니 날짜를 확인해 두세요.</li>
+        <li><strong>내 요율 확인:</strong> 은행 앱 대출 상세 화면의 중도상환수수료 항목, 또는 고객센터에 &ldquo;실행일 기준 요율&rdquo;을 물어보면 돼요.
+          수수료율은 대출받은 시점 요율이 만기까지 그대로 유지돼요.</li>
+      </ul>
+    </article>
+
+    <article class="guide-card">
+      <h3>3. 체증식 분할상환, 초반 부담을 낮추는 대신</h3>
+      <p>
+        체증식은 첫해 납입금을 낮게 시작해 <strong>1년마다 같은 비율로 올리는</strong> 방식이에요.
+        한국주택금융공사는 체증식을 &ldquo;매월 상환하는 원금과 이자의 합계가 증가하는 방식&rdquo;으로 안내하고,
+        보금자리론·디딤돌대출에서 만 40세 미만이거나 공사 사전심사를 받은 경우에 고를 수 있어요.
+      </p>
+      <p class="formula">첫해 납입금 = 대출원금 ÷ Σ (1+체증률)^연차 ÷ (1+월금리)^개월</p>
+      <p>
+        계산 원리는 간단해요. <strong>앞으로 낼 돈을 전부 대출금리로 할인해서 더한 값이 원금과 같아지도록</strong>
+        첫해 납입금을 역산해요. 그래서 만기에는 잔액이 정확히 0원이 돼요.
+        이 계산기는 1년마다 체증률만큼 오르는 모델을 쓰고, 보금자리론처럼 매월 일정 금액씩 오르는 상품은
+        첫해·마지막 해 금액이 조금 달라질 수 있어요.
+      </p>
+      <ul class="guide-list">
+        <li><strong>3억 원 · 연 4% · 30년 기준</strong>으로 원리금균등은 매달 143만 원으로 같아요. 체증률 1%면 첫해 127만 원에서 마지막 해 170만 원,
+          3%면 첫해 99만 원에서 마지막 해 232만 원으로 올라가요.</li>
+        <li><strong>총이자는 늘어나요.</strong> 같은 조건에서 총이자는 2억 1,561만 원(원리금균등) → 2억 3,093만 원(1%) → 2억 6,277만 원(3%)이에요.
+          초반에 원금이 거의 안 줄어서 이자가 붙는 원금이 오래 남기 때문이에요.</li>
+        <li><strong>누적 이익은 중간에 정점을 찍을 수 있어요.</strong> 첫 달 잔액은 어느 방식이나 같지만, 체증식은 원금이 천천히 줄어서 시간이 갈수록 이자 차이가 작아지고
+          나중엔 역전되기도 해요. 그래서 위 계산기의 &lsquo;누적 순이익 흐름&rsquo;이 한번 올라갔다 내려오는 모양이 되기도 해요.
+          정점과 만기 값을 함께 보고 판단하세요.</li>
+        <li><strong>중간에 팔거나 또 갈아탈 계획</strong>이라면 만기 총이자보다 그 시점의 남은 원금이 중요해요.
+          체증식은 5년쯤 뒤 잔액이 원리금균등보다 많아요.</li>
+      </ul>
+      <p class="guide-note">
+        보금자리론은 대출 실행 후 상환방식을 바꿀 수 없고, 50년 만기에는 체증식을 쓸 수 없어요.
+        신청 전에 한국주택금융공사 홈페이지의 월별상환원리금 조회로 실제 상환표를 확인해 두세요.
+      </p>
+    </article>
+
+    <article class="guide-card">
+      <h3>4. LTV로 내 대출이 한도 안에 있는지 확인하기</h3>
+      <p class="formula">LTV = 남은 대출 원금 ÷ 집값(시세) × 100</p>
+      <p>
+        LTV(담보인정비율)는 집값 대비 빌린 돈의 비율이에요. 2026년 11월 기준으로 무주택자는
+        <strong>규제지역 40%, 수도권 비규제·지방 70%</strong>이고, 생애최초 구입자는 수도권·규제지역 70%,
+        그 밖의 지역 80%까지 가능해요. 규제지역은 서울 25개 구 전부와 경기 12곳(과천·광명·성남·수원·안양·용인 수지·의왕·하남 등),
+        2026년 7월부터 화성 동탄구·용인 기흥구·구리시까지 넓어졌어요.
+      </p>
+      <ul class="guide-list">
+        <li><strong>금액 한도가 따로 있어요.</strong> 수도권·규제지역에서 집을 살 때는 LTV와 별개로
+          집값 15억 원 이하 6억 원, 15억~25억 원 4억 원, 25억 원 초과 2억 원까지만 빌릴 수 있어요.</li>
+        <li><strong>LTV는 상한이에요.</strong> 실제 한도는 LTV·DSR·금융사 심사 중 가장 작은 금액으로 정해져요.
+          총대출이 1억 원을 넘으면 DSR 40%(은행) 안에서 원리금 상환액이 잡혀요.</li>
+        <li><strong>갈아타기는 증액이 안 돼요.</strong> 대환대출은 기존 잔액 이내로만 옮길 수 있어서,
+          지금 LTV가 기준을 넘는다고 갈아타기로 한도가 늘어나지는 않아요.</li>
+        <li><strong>전세대출은 LTV 대신 보증금 비율</strong>로 봐요. 보증부 전세자금대출은 보증금의 80% 안에서
+          보증기관 한도(수도권 3억 3,000만 원 등)와 은행 한도 중 작은 금액까지 나와요.</li>
+      </ul>
+      <p class="guide-note">
+        규제지역은 국토교통부가 수시로 바꾸고, 같은 시·구 안에서도 다르게 지정돼요.
+        계약 전에 해당 주소가 규제지역인지, 생애최초·서민실수요 우대 요건을 채우는지 꼭 확인하세요.
+      </p>
+    </article>
+
+    <article class="guide-card">
+      <h3>5. 대환대출(온라인·원스톱) 이용할 때 주의할 점</h3>
+      <p>
+        금융위원회가 만든 대환대출 인프라는 2023년 5월 신용대출로 시작해서, 2024년 1월 9일 아파트 주택담보대출,
+        1월 31일 전세자금대출까지 넓어졌어요. 은행에 가지 않고 앱으로 기존 대출을 조회하고 더 낮은 상품으로 옮길 수 있죠.
+      </p>
+      <ul class="guide-list">
+        <li><strong>대상:</strong> 시세 조회가 되는 아파트 담보 10억 원 이하 주담대, 그리고 보증부 전세자금대출이에요.
+          <strong>증액은 안 되고</strong> 기존 대출 잔액 이내로만 옮길 수 있어요.</li>
+        <li><strong>시기:</strong> 주담대는 기존 대출을 받은 지 6개월이 지나야, 전세대출은 3개월이 지나야 신청할 수 있어요.
+          전세대출은 임차계약 기간의 절반이 지나기 전까지만 가능해요(2년 계약이면 1년 안에).</li>
+        <li><strong>전세대출은 보증기관이 같아야 해요:</strong> HF 보증이면 HF 보증 상품, HUG면 HUG, SGI서울보증이면 SGI 상품으로만 갈아탈 수 있어요.
+          은행 앱에서 직접 알아볼 때는 그 은행이 내 보증기관과 제휴하는지 먼저 확인하세요.</li>
+        <li><strong>안 되는 대출:</strong> 연체나 법적 분쟁 중인 대출, 정책금융 상품, 중도금 집단대출은 갈아타기가 안 돼요.</li>
+        <li><strong>조회 시간:</strong> 대출 비교는 영업일 9시~20시에만 돼요(마이데이터 가입 필요). 신규 대출 심사는 보통 2~7일 걸려요.</li>
+        <li><strong>신용점수:</strong> 갈아타기 자체로 점수가 떨어지진 않아요. 2024년 1월 금융위 발표에서는 주담대를 갈아탄 차주의
+          신용점수가 평균 32점 올랐어요. 다만 짧은 기간에 여러 곳에 신청하면 조회 기록이 쌓이니 한두 곳씩 비교하세요.</li>
+      </ul>
+      <p class="guide-note">
+        은행 자체 앱에서도 대환을 받을 수 있지만, 보증기관 제휴나 우대금리 조건은 앱마다 달라요.
+        같은 조건이라면 두 곳 이상 견줘보는 게 안전해요.
+      </p>
+    </article>
+  </section>
+
+  <section class="faq container" id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">자주 묻는 질문</h2>
+    <details class="faq-item">
+      <summary>금리 차이가 0.1%p만 나도 갈아타는 게 좋을까요?</summary>
+      <p>0.1%p 차이면 3억 원 기준 이자가 한 달에 <strong>2만 5천 원</strong> 정도예요. 중도상환수수료와 부대비용이 100만 원만 돼도 본전 찾는 데 40개월이 걸려요. 금리 차이보다 남은 기간과 수수료를 먼저 보세요. 위 계산기에 두 금리를 넣으면 본전까지 몇 개월인지 바로 나와요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>체증식 분할상환은 어떻게 계산하고, 원리금균등보다 유리한가요?</summary>
+      <p>체증식은 첫해 납입금을 낮게 시작해 해마다 같은 비율(체증률)로 올리는 방식이에요. 이 계산기는 1년마다 체증률만큼 오르는 모델로, 모든 납입액을 대출금리로 할인한 합이 원금과 같아지도록 첫해 납입금을 역산합니다. 초반 부담은 확실히 줄지만 원금이 늦게 줄어 총이자는 원리금균등보다 많아져요. 예를 들어 3억 원·연 4%·30년이면 첫해 월 143만 원(원리금균등)이 체증률 3%에서 99만 원으로 내려가고, 대신 총이자는 2억 1,561만 원에서 2억 6,277만 원으로 늘어요. 한국주택금융공사 보금자리론·디딤돌대출 체증식은 매월 일정 금액씩 오르는 방식이라 금액이 조금 달라질 수 있어요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>중도상환수수료는 언제부터 0원이 되나요?</summary>
+      <p>대출 계약일부터 3년이 지나면 원칙적으로 받을 수 없어요(금융소비자보호법 제20조). 은행·저축은행·보험사가 대상이고, 상호금융은 약정서 기준이 다를 수 있어요. 수수료율은 대출받은 시점 요율이 유지되고, 3년에 가까워질수록 잔존일수 비율만큼 줄어들어요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>LTV는 어떻게 계산하고, 내 대출은 한도 안에 있나요?</summary>
+      <p>LTV(담보인정비율)는 남은 대출 원금을 집값으로 나눈 비율이에요. 2026년 11월 기준으로 무주택자는 규제지역 40%, 수도권 비규제·지방 70%이고, 생애최초는 수도권·규제지역 70%, 그 밖의 지역 80%예요. 수도권과 규제지역에서 집을 살 때는 비율과 별개로 집값 15억 원 이하 6억 원, 15억~25억 원 4억 원, 25억 원 초과 2억 원 한도가 함께 붙어요. LTV는 상한일 뿐이라 DSR과 신용 심사에서 실제 한도가 더 낮아질 수 있어요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>전세자금대출도 갈아탈 수 있나요?</summary>
+      <p>보증부 전세자금대출이면 가능해요. 기존 대출을 받은 지 3개월이 지나야 하고, 임차계약 기간의 절반이 지나기 전까지 신청할 수 있어요. 한도는 기존 잔액 이내이고, 기존 보증기관(HF·HUG·SGI서울보증)과 같은 기관의 상품으로만 갈아탈 수 있어요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>대출을 갈아타면 신용점수가 떨어지나요?</summary>
+      <p>갈아타기 자체로 크게 떨어지진 않아요. 2024년 1월 금융위원회 발표를 보면 주담대를 갈아탄 차주의 신용점수가 평균 32점 올랐어요. 다만 짧은 기간에 여러 금융사에 한꺼번에 신청하면 조회 기록이 쌓이니 한두 곳씩 비교해 보세요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>갈아탈 때 상환방식을 바꿔도 되나요?</summary>
+      <p>새 대출은 신청할 때 상환방식을 고르는 경우가 많아서 바꿀 수 있지만, 한국주택금융공사 보금자리론처럼 실행 후에는 상환방식을 바꿀 수 없는 상품도 있어요. 체증식은 만 40세 미만이거나 공사 사전심사를 받은 경우에만 고를 수 있고, 50년 만기에는 쓸 수 없어요. 이 계산기에서는 지금 대출과 갈아탈 대출의 방식을 따로 골라 비교할 수 있어요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>계산 결과와 은행에서 안내받은 금액이 달라요.</summary>
+      <p>이 계산기는 같은 원금·같은 남은 기간으로 단순 비교해요. 실제로는 우대금리 충족 여부, 변동금리 주기, 수수료 일수 절사 방식, 체증식의 증가 방식(매월 정액·매년 정률), 인지세·등기비용 차이 때문에 몇만 원에서 몇십만 원까지 달라질 수 있어요. 최종 금액은 은행 앱의 중도상환수수료 조회 화면으로 확인해 주세요.</p>
+    </details>
+    <details class="faq-item">
+      <summary>만기를 늘려서 갈아타면 어떻게 되나요?</summary>
+      <p>월 납입금은 줄지만 총이자는 늘어나요. 같은 4억 원이라도 25년을 30년으로 늘리면 5년치 이자가 더 붙어요. 이 계산기는 남은 기간을 그대로 두고 비교하니, 기간을 늘릴 계획이면 총이자까지 함께 따져보세요.</p>
+    </details>
+  </section>
+
+  <!-- AdSense Slot: FAQ 아래 (콘텐츠 소진 지점) -->
+  <div class="ad-slot ad-slot--bottom container" data-ad-slot="bottom" aria-hidden="true"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">대출 갈아타기 계산기</p>
+      <p class="footer-desc">주담대·전세대출 갈아타기 손익을 체증식·LTV·중도상환수수료까지 넣어 계산하는 무료 도구예요.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">면책 안내</h2>
+      <p>
+        이 사이트의 계산 결과는 참고용이에요. 금리, 중도상환수수료율, 부대비용, LTV·규제 기준은 금융기관과 상품, 대출 실행일, 지역에 따라 달라지고,
+        법령과 약관도 바뀔 수 있어요. 실제 대출 조건과 상환 금액은 반드시 해당 금융기관의 안내와 약정서로 확인해 주세요.
+        이 사이트는 금융상품을 중개하거나 권유하지 않고, 대출 결정에 대한 책임을 지지 않아요.
+      </p>
+    </div>
+    <div>
+      <h2 class="footer-h">개인정보 안내</h2>
+      <p>
+        계산에 넣은 숫자는 <strong>여러분의 브라우저 안에서만</strong> 계산되고 서버로 보내지 않아요. 회원가입도, 로그인도 없고,
+        입력값을 저장하지 않아요. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>에서 확인할 수 있어요.
+      </p>
+      <p class="footer-meta">© 2026 대출 갈아타기 계산기. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
